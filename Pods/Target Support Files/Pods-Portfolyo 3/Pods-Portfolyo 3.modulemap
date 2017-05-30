@@ -1,0 +1,6 @@
+framework module Pods_Portfolyo_3 {
+  umbrella header "Pods-Portfolyo 3-umbrella.h"
+
+  export *
+  module * { export * }
+}
