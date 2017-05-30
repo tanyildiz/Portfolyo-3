@@ -5,7 +5,6 @@
 //  Created by Niyazi TANYILDIZ on 29/05/2017.
 //  Copyright © 2017 nt. All rights reserved.
 //
-
 import UIKit
 import SDWebImage
 
@@ -96,4 +95,3 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
 }
-
