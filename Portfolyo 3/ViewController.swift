@@ -29,23 +29,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 {
                     let json = try JSONSerialization.jsonObject(with: urlVeri, options: .mutableContainers) as? NSDictionary
                     
-                    if let posts = json?.value(forKeyPath: "posts.title") as? NSArray
+                    if let posts = json
                     {
-                        for i in 0..<posts.count {
-                            if let allpost = posts[i] as? String
-                            {
-                                self.workNames.append(allpost)
-                            }
-                        }
-                    }
-                    
-                    if let allimg = json?.value(forKeyPath: "posts.attachments.images.medium.url") as? NSArray
-                    {
-                        for i in 0..<allimg.count
+                        let titles = posts.value(forKeyPath: "posts.title") as! NSArray
+                        for i in titles
                         {
-                            self.images.append(allimg[i] as! String)
+                            self.workNames.append(i as! String)
                         }
+                        
+                        let imgUrl = posts.value(forKeyPath: "posts.attachments.url") as! NSArray
+                        
+                        for _ in 0..<imgUrl.count
+                        {
+                            self.images.append(imgUrl.lastObject as! String)
+                        }
+
                     }
+
                     
                     
                     
