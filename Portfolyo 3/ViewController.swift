@@ -37,13 +37,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             self.workNames.append(i as! String)
                         }
                         
-                        let imgUrl = posts.value(forKeyPath: "posts.attachments.url") as! NSArray
+                        let imgUrl = posts.value(forKey: "posts") as! NSArray
                         
-                        for _ in 0..<imgUrl.count
+                        for i in imgUrl.value(forKeyPath: "attachments.url") as! [AnyObject]
                         {
-                            self.images.append(imgUrl.lastObject as! String)
+                            let items = [i[0] as! NSString as String]
+                            
+                            for k in 0..<items.count
+                            {
+                                self.images.append(items[k])
+                            }
                         }
-
+                        
                     }
 
                     
@@ -51,8 +56,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     // YORUM 1:  Burayı eklemezseniz tabloya veri doldurmaz. AŞAĞIDA 2 yorum daha yazdım
                     DispatchQueue.main.async
-                        {
-                            self.tableView.reloadData()
+                    {
+                        self.tableView.reloadData()
                     }
                 }
                 catch
