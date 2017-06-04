@@ -38,22 +38,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         }
                         
                         let imgUrl = posts.value(forKey: "posts") as! NSArray
-                        
-                        for i in imgUrl.value(forKeyPath: "attachments.url") as! [AnyObject]
+                        let allimages = imgUrl.value(forKeyPath: "attachments.url")
+                        for i in (allimages as? [NSArray])!
                         {
-                            let items = [i[0] as! NSString as String]
-                            
-                            for k in 0..<items.count
-                            {
-                                self.images.append(items[k])
-                            }
+                            let k = i[0]
+                            print(k)
+                            self.images.append(k as! String)
                         }
                         
                     }
-
-                    
-                    
-                    
                     // YORUM 1:  Burayı eklemezseniz tabloya veri doldurmaz. AŞAĞIDA 2 yorum daha yazdım
                     DispatchQueue.main.async
                     {
