@@ -38,11 +38,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         }
                         
                         let imgUrl = posts.value(forKey: "posts") as! NSArray
-                        let allimages = imgUrl.value(forKeyPath: "attachments.url")
+                        let allimages = imgUrl.value(forKeyPath: "attachments.url") as! NSArray
                         for i in (allimages as? [NSArray])!
                         {
                             let k = i[0]
-                            print(k)
+                            //print(k)
                             self.images.append(k as! String)
                         }
                         
@@ -62,7 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         //YORUM 2:Task resume yanlış yerde kullanılmıştı Xcode öncesinde ; öneriyorsa bilinki hata yapmışsınızdır
         task.resume()
-        print(self.images)
+        //print(self.images)
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,5 +91,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "BigImageVC") as? DetailsViewController {
+            vc.navigationItem.title = workNames[indexPath.row]
+            
+            vc.selectedImage = images[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     
 }

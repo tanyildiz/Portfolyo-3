@@ -14,6 +14,7 @@
 		ED77C49F1EDDBD0A00848F87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED77C49E1EDDBD0A00848F87 /* Assets.xcassets */; };
 		ED77C4A21EDDBD0A00848F87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED77C4A01EDDBD0A00848F87 /* LaunchScreen.storyboard */; };
 		ED77C4AC1EDDBE2600848F87 /* SampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED77C4AB1EDDBE2600848F87 /* SampleTableViewCell.swift */; };
+		ED95FAF31EE7F57F0085A35D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95FAF21EE7F57F0085A35D /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		ED77C4A11EDDBD0A00848F87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED77C4A31EDDBD0A00848F87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED77C4AB1EDDBE2600848F87 /* SampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleTableViewCell.swift; path = ../SampleTableViewCell.swift; sourceTree = "<group>"; };
+		ED95FAF21EE7F57F0085A35D /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = ../DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				ED77C4971EDDBD0A00848F87 /* AppDelegate.swift */,
 				ED77C4991EDDBD0A00848F87 /* ViewController.swift */,
+				ED95FAF21EE7F57F0085A35D /* DetailsViewController.swift */,
 				ED77C4AB1EDDBE2600848F87 /* SampleTableViewCell.swift */,
 				ED77C49B1EDDBD0A00848F87 /* Main.storyboard */,
 				ED77C49E1EDDBD0A00848F87 /* Assets.xcassets */,
@@ -218,6 +221,7 @@
 				ED77C49A1EDDBD0A00848F87 /* ViewController.swift in Sources */,
 				ED77C4AC1EDDBE2600848F87 /* SampleTableViewCell.swift in Sources */,
 				ED77C4981EDDBD0A00848F87 /* AppDelegate.swift in Sources */,
+				ED95FAF31EE7F57F0085A35D /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
