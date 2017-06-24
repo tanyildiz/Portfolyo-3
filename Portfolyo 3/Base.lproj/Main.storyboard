@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,15 +35,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aW8-G9-Ei8">
-                                                    <rect key="frame" x="0.0" y="8" width="375" height="162"/>
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aW8-G9-Ei8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="none" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w40-mM-TOl">
-                                                    <rect key="frame" x="8" y="178" width="82" height="45"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w40-mM-TOl">
+                                                    <rect key="frame" x="8" y="204" width="359" height="42"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="45" id="BhT-qs-1LI"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="35"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -53,13 +49,13 @@
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="aW8-G9-Ei8" secondAttribute="bottom" constant="72" id="3oe-mH-OWd"/>
-                                                <constraint firstItem="aW8-G9-Ei8" firstAttribute="top" secondItem="nxs-Qt-bbT" secondAttribute="topMargin" id="6js-hg-3bL"/>
-                                                <constraint firstItem="w40-mM-TOl" firstAttribute="top" secondItem="aW8-G9-Ei8" secondAttribute="bottom" constant="8" id="KAR-1W-3zm"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="w40-mM-TOl" secondAttribute="bottom" constant="19" id="Nq7-hi-gnE"/>
-                                                <constraint firstItem="w40-mM-TOl" firstAttribute="leading" secondItem="nxs-Qt-bbT" secondAttribute="leadingMargin" id="cM8-I8-S3i"/>
-                                                <constraint firstAttribute="trailing" secondItem="aW8-G9-Ei8" secondAttribute="trailing" id="dPh-oU-yDN"/>
-                                                <constraint firstItem="aW8-G9-Ei8" firstAttribute="leading" secondItem="nxs-Qt-bbT" secondAttribute="leading" id="ziG-Eh-zc3"/>
+                                                <constraint firstItem="w40-mM-TOl" firstAttribute="leading" secondItem="nxs-Qt-bbT" secondAttribute="leading" constant="8" id="8Gv-EP-56J"/>
+                                                <constraint firstItem="aW8-G9-Ei8" firstAttribute="centerX" secondItem="w40-mM-TOl" secondAttribute="centerX" id="CkI-a6-7HF"/>
+                                                <constraint firstAttribute="trailing" secondItem="w40-mM-TOl" secondAttribute="trailing" constant="8" id="IHi-xI-pSG"/>
+                                                <constraint firstItem="aW8-G9-Ei8" firstAttribute="leading" secondItem="nxs-Qt-bbT" secondAttribute="leading" id="MsR-zT-yeh"/>
+                                                <constraint firstItem="w40-mM-TOl" firstAttribute="top" secondItem="aW8-G9-Ei8" secondAttribute="bottom" constant="8" id="O4u-gh-AVV"/>
+                                                <constraint firstItem="aW8-G9-Ei8" firstAttribute="top" secondItem="nxs-Qt-bbT" secondAttribute="top" id="fx0-Ia-QkY"/>
+                                                <constraint firstAttribute="bottom" secondItem="w40-mM-TOl" secondAttribute="bottom" constant="4" id="zWy-fP-8Jw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
