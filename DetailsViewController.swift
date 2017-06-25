@@ -21,6 +21,8 @@ class DetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        
+        
         if let imageToLoad = selectedImage {
             bigImage.image  = UIImage(named: imageToLoad)
         }

@@ -10,6 +10,7 @@ import UIKit
 
 class SampleTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var videoViewCell: UIView!
     
     @IBOutlet weak var img: UIImageView!
     

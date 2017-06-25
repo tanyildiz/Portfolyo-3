@@ -7,20 +7,28 @@
 //
 import UIKit
 import SDWebImage
+import AVFoundation
+import AVKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var workNames = [String]()
     var images = [String]()
+    var videos = [String]()
+    
+    let urlStr = "http://www.tanyildiz.com/?json=1"
+
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         
-        let urlStr = "http://www.tanyildiz.com/?json=1"
-        let url = URL(string: urlStr)
+        let url = URL(string: self.urlStr)
+
+        
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             
             if let urlVeri = data
@@ -41,9 +49,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let allimages = imgUrl.value(forKeyPath: "attachments.url") as! NSArray
                         for i in (allimages as? [NSArray])!
                         {
-                            let k = i[0]
-                            //print(k)
-                            self.images.append(k as! String)
+                            let k = i[0] as! String
+                            if k.hasSuffix("m4v") || k.hasSuffix("mov") {
+                                self.videos.append(k)
+                                print(self.videos)
+                            } else if k.hasSuffix("png") || k.hasSuffix("jpg"){
+                             self.images.append(k)
+                            }
                         }
                         
                     }
@@ -60,7 +72,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
         }
-        //YORUM 2:Task resume yanlış yerde kullanılmıştı Xcode öncesinde ; öneriyorsa bilinki hata yapmışsınızdır
         task.resume()
         //print(self.images)
     }
@@ -76,14 +87,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        //YORUM 3: Resim alanını burda tanımlamayıp tasarım ekranında tanımlarsanız uygulamanız çalışmaz.
-        //Resim olayı için kampanyalar derslerinin tamamını izleyin
         let cell = tableView.dequeueReusableCell(withIdentifier: "sampleCell", for: indexPath) as! SampleTableViewCell
         
         cell.workName.text = workNames[indexPath.row]
         
         let imgView = cell.viewWithTag(1) as? UIImageView
-        imgView?.sd_setImage(with: URL(string: images[indexPath.row]))
+        
+        if ((imgView?.image) != nil) {
+            imgView?.sd_setImage(with: URL(string: images[indexPath.row]))
+
+        } else {
+            
+            let player = AVPlayer(url: (NSURL(string: videos[indexPath.row]) as URL?)!)
+            
+            let playerLayer = AVPlayerLayer(player: player)
+            playerLayer.frame = cell.bounds
+            
+            cell.layer.addSublayer(playerLayer)
+            player.play()
+
+            }
         
         return cell
     }
@@ -100,6 +123,4 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-    
 }
