@@ -7,5 +7,7 @@ target 'Portfolyo 3' do
 
   # Pods for Portfolyo 3
   pod 'SDWebImage/WebP'
+  pod 'Alamofire', '~> 4.4'
+  pod 'SwiftyJSON'
 
 end

@@ -7,62 +7,37 @@
 //
 import UIKit
 import SDWebImage
+import Alamofire
+import SwiftyJSON
+import AVKit
+import AVFoundation
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var workNames = [String]()
     var images = [String]()
+    let urlStr = "http://www.tanyildiz.com/?json=1"
+
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        let urlStr = "http://www.tanyildiz.com/?json=1"
         let url = URL(string: urlStr)
-        let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
-            
-            if let urlVeri = data
-            {
-                do
-                {
-                    let json = try JSONSerialization.jsonObject(with: urlVeri, options: .mutableContainers) as? NSDictionary
-                    
-                    if let posts = json
-                    {
-                        let titles = posts.value(forKeyPath: "posts.title") as! NSArray
-                        for i in titles
-                        {
-                            self.workNames.append(i as! String)
-                        }
-                        
-                        let imgUrl = posts.value(forKey: "posts") as! NSArray
-                        let allimages = imgUrl.value(forKeyPath: "attachments.url") as! NSArray
-                        for i in (allimages as? [NSArray])!
-                        {
-                            let k = i[0]
-                            //print(k)
-                            self.images.append(k as! String)
-                        }
-                        
-                    }
-                    // YORUM 1:  Burayı eklemezseniz tabloya veri doldurmaz. AŞAĞIDA 2 yorum daha yazdım
-                    DispatchQueue.main.async
-                    {
-                        self.tableView.reloadData()
-                    }
-                }
-                catch
-                {
-                    print(error)
-                }
+        
+        Alamofire.request(url!, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let posts = json["posts"].stringValue
+                print(posts)
+                    self.images.append(posts)
+                    print(self.images)
+            case .failure(let error):
+                print(error)
             }
-            
         }
-        //YORUM 2:Task resume yanlış yerde kullanılmıştı Xcode öncesinde ; öneriyorsa bilinki hata yapmışsınızdır
-        task.resume()
-        //print(self.images)
     }
     
     override func didReceiveMemoryWarning() {
